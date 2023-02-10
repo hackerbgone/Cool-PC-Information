@@ -10,9 +10,8 @@ int main() {
 
 
     std::cout << std::endl;
-    std::cout << "Private IP Address: " << std::endl;
-    system("hostname -I");
-    
+
+
     char hostname[1024];
     gethostname(hostname, 1024);
     std::cout << "Hostname: " << hostname << std::endl;
@@ -72,7 +71,13 @@ int main() {
         std::cout << line << std::endl;
     }
 
-
+    
+    std::cout << "Domain Info: " << std::endl;
+    std::ifstream domain("/etc/resolv.conf");
+    std::getline(domain, line);
+    while (std::getline(domain, line)) {
+        std::cout << line << std::endl;
+    }
 
 
 
